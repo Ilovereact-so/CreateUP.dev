@@ -1,3 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/arrow-down.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/options.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/menu-cake.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/home.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/color-bucket.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/feed.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/board.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/bell.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/shield.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/toggle-off.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/close.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css');
+/*profile */
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/ghost-character.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/ui-kit.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/search.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/home-alt.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/color-bucket.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/add.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/smartphone-chip.css');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +33,110 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*::selection {
+  color:white;
+  background: rgb(116, 116, 116);
+  }
+#root{
+  overflow-x: clip
+}
+html {
+  --scrollbarBG: #090909;
+  --thumbBG: #4e4e4e;
+}
+
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+}
+#scrollBTN p{
+  animation: hiddenBTN 3s infinite;
+  animation-delay: -6s;
+}
+#scrollBTN i{
+  animation: transformArrow 3s infinite;
+  animation-delay: -6s;
+}
+@keyframes hiddenBTN {
+  0%{
+    opacity: 1;
+  }
+  30%{
+    opacity: 0;
+  }
+  70%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes transformArrow {
+  0%{
+    opacity: 0;
+    top: 0;
+  }
+  25%{
+    opacity: 0;
+    top: 0;
+    
+  }
+  30%{
+    opacity: 1;
+  }
+  60%{
+    opacity: 0;
+    top: 60px;
+  }
+  100%{
+    opacity: 0;
+    top: 0;
+  }
+}
+
+
+
+.generalbg{
+  --bg: #00000099;
+  --type: #a1c8dd3d;
+  opacity: 1;
+  background: radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent) 20px 20px, linear-gradient(var(--type) 1.6px, transparent 1.6px) 0 -0.8px, linear-gradient(90deg, var(--type) 1.6px, var(--bg) 1.6px) -0.8px 0;
+  background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+}
+
+#overview{
+  animation: hueGerenralBG 7s infinite;
+  animation-delay: 3s;
+}
+
+@keyframes hueGerenralBG {
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  25%{
+    filter: hue-rotate(25deg);
+  }
+  75%{
+    filter: hue-rotate(25deg);
+  }
+  100%{
+    filter: hue-rotate(0deg);
+  }
+}
+
+#codebox{
+  box-shadow: inset 29px 29px 59px #bebebe17, inset -29px -29px 59px #ffffff1f;
+}
+#codebox2{
+  box-shadow: inset 29px 29px 59px #bebebe17, inset -29px -29px 59px #ffffff1f;
+}
+
+#overviewlight{
+  filter: drop-shadow(0px 0px 40px white);
 }
