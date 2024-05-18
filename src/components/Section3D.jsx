@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
-import { Model } from '../3D/Scene';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { LayoutCamera, MotionCanvas } from 'framer-motion-3d';
 import { extend } from '@react-three/fiber';
 import { useMemo } from 'react';
 import * as THREE from 'three'
+import { Model } from '../3D/Scene3DTT';
 
 const Section3D = () => {
 
@@ -62,13 +62,14 @@ const Section3D = () => {
         [0, 0.2, 0.4],
         ["25%",  "25%", "0%"]
     );
+//                <Model modelRotation={modelRotation} chairRotation={chairRotation} modelX={modelPositionX} modelY={modelPositionY} modelZ={modelPositionZ}/>
 
 
   return (
     <div ref={targetRef} id='startTarget' className='h-[200vh]'>
         <motion.div style={{scale, translateY: -500}} className="h-[100vh] top-[500px] sticky w-[100vw] flex justify-center origin-left">
             <MotionCanvas>
-                <Model modelRotation={modelRotation} chairRotation={chairRotation} modelX={modelPositionX} modelY={modelPositionY} modelZ={modelPositionZ}/>
+                <Model/>//
                 <LayoutCamera name="Camera001" makeDefault={true} far={1000} near={0.1} fov={22.895} position={[-6.949, 2.004, 4.145]} rotation={[-0.237, -0.987, -0.189]} />
             </MotionCanvas>
             <motion.div style={{opacity:textOpacity, left:textPositionL}} className='font-Poppins text-[13px] text-white absolute top-[25%] left-[25%] flex '>
