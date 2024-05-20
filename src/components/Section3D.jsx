@@ -69,7 +69,7 @@ const Section3D = () => {
     <div ref={targetRef} id='startTarget' className='h-[200vh]'>
         <motion.div style={{scale, translateY: -500}} className="h-[100vh] top-[500px] sticky w-[100vw] flex justify-center origin-left">
             <MotionCanvas>
-                <Model/>//
+                <Model modelRotation={modelRotation} chairRotation={chairRotation} modelX={modelPositionX} modelY={modelPositionY} modelZ={modelPositionZ}/>
                 <LayoutCamera name="Camera001" makeDefault={true} far={1000} near={0.1} fov={22.895} position={[-6.949, 2.004, 4.145]} rotation={[-0.237, -0.987, -0.189]} />
             </MotionCanvas>
             <motion.div style={{opacity:textOpacity, left:textPositionL}} className='font-Poppins text-[13px] text-white absolute top-[25%] left-[25%] flex '>

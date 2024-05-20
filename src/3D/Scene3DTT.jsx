@@ -5,83 +5,85 @@ Command: npx gltfjsx@6.2.7 scene3DTT.gltf
 
 import React, { useRef } from 'react'
 import { useGLTF, PerspectiveCamera } from '@react-three/drei'
+import { motion } from 'framer-motion-3d'
 
-export function Model(props) {
+export function Model({props, modelRotation, chairRotation, modelX, modelY, modelZ}) {
   const { nodes, materials } = useGLTF('/scene3DTT.gltf')
   return (
-    <group {...props} dispose={null}>
-      <PerspectiveCamera makeDefault={false} far={1000} near={0.1} fov={22.895} position={[-6.949, 2.004, 4.145]} rotation={[-0.237, -0.987, -0.189]} />
-      <pointLight name="Area" intensity={3} decay={2} color="#efe2c3" position={[0.231, 2, -0.573]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.631, 1.942, 0.51]} />
-      <pointLight intensity={1} decay={2} color="#ffcf59" position={[1.691, 5.886, -0.573]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.631, 1.942, 0.51]} />
-      <pointLight intensity={1} decay={2} color="#ff0011" position={[-0.411, 2.349, -2.353]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff5d0d" position={[0.164, 2.365, -2.354]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff0011" position={[0.752, 2.365, -2.364]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff890e" position={[1.368, 2.365, -2.364]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff400f" position={[1.983, 2.365, -2.383]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff0011" position={[2.103, 2.307, -2.007]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff5200" position={[2.131, 2.106, -1.337]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff9b20" position={[2.15, 1.899, -0.649]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff4f24" position={[2.14, 1.706, -0.007]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
-      <pointLight intensity={1} decay={2} color="#ff0011" position={[2.155, 1.5, 0.678]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
-      <mesh geometry={nodes['Text-IK75001'].geometry} material={materials['2.001']} position={[0.376, 1.81, -2.413]} rotation={[Math.PI / 2, 0, 0.157]} scale={0.01} />
-      <mesh geometry={nodes['Text-FEKER'].geometry} material={materials['2']} position={[0.376, 1.821, -2.413]} rotation={[Math.PI / 2, 0, 0.157]} scale={0.045} />
-      <mesh geometry={nodes['Text-BORN'].geometry} material={materials['4534595']} position={[0.644, 1.606, -2.274]} rotation={[Math.PI / 2, 0, 0]} scale={0.041} />
-      <mesh geometry={nodes.Plane137.geometry} material={materials['Procedral White Silk']} position={[0.571, 1.795, -2.362]} rotation={[1.664, 0.015, 0.156]} scale={[0.003, 0.001, 0.003]} />
-      <group position={[0.439, 1.837, -2.691]} rotation={[0, -0.327, 0]}>
-        <mesh geometry={nodes.Cube247.geometry} material={materials['Raindrops On The Glass']} />
-        <mesh geometry={nodes.Cube247_1.geometry} material={materials['Green marble']} />
-      </group>
-      <mesh geometry={nodes.bootle.geometry} material={materials['Raindrops On The Glass']} position={[1.634, 1.768, -2.411]} rotation={[0, -0.27, 0]} />
-      <group position={[0.595, 1.759, -2.406]} rotation={[Math.PI / 2, 0, 0.157]} scale={[0.047, 0.024, 0.047]}>
-        <mesh geometry={nodes.meshId1_name001.geometry} material={materials['White calacatta marble']} />
-        <mesh geometry={nodes.meshId1_name001_1.geometry} material={materials['White Stone']} />
-      </group>
-      <mesh geometry={nodes.wall.geometry} material={materials['Fine leather white']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes.floor.geometry} material={materials['Wood.001']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes.box05.geometry} material={materials['Black Nickel']} position={[1.634, 1.768, -2.411]} rotation={[0, -0.27, 0]} />
-      <mesh geometry={nodes.box03.geometry} material={materials['White Stone']} position={[0, 1.809, -0.259]} />
-      <mesh geometry={nodes.box01.geometry} material={materials['Fine leather black']} position={[0.09, 0, 0.103]} />
-      <group position={[2.009, 1.224, -2.173]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.012}>
-        <mesh geometry={nodes.Cube221.geometry} material={materials['Carbon Fibre']} />
-        <mesh geometry={nodes.Cube221_1.geometry} material={materials['Rubber Black']} />
-      </group>
-      <mesh geometry={nodes.screen02.geometry} material={materials['Metal Black Dixon']} position={[0.396, 1.198, -0.891]} scale={[1.544, 0.167, 0.296]} />
-      <mesh geometry={nodes.screen01.geometry} material={materials['Metal Black Dixon']} position={[0.396, 1.198, -0.252]} scale={[1.544, 0.167, 0.296]} />
-      <mesh geometry={nodes.monitor_mount.geometry} material={materials['Black Iron']} position={[-1.081, -0.478, 0.175]} scale={1.544} />
-      <group position={[1.665, 0.838, -0.683]} rotation={[0, -Math.PI / 2, 0]} scale={0.055}>
-        <mesh geometry={nodes.meshId1_name.geometry} material={materials['White Marble']} />
-        <mesh geometry={nodes.meshId1_name_1.geometry} material={materials['Keyboard Layout ']} />
-      </group>
-      <mesh geometry={nodes.pad.geometry} material={materials['Black and gold marble']} />
-      <mesh geometry={nodes.chair.geometry} material={materials['phongE2.002']} position={[0.843, 0, -0.671]} rotation={[0, Math.PI / 2, 0]} />
-      <group position={[2.135, 0.886, 0.553]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.098}>
-        <mesh geometry={nodes.Text061.geometry} material={materials['ВЕНТИЛЯТОР.001']} />
-        <mesh geometry={nodes.Text061_1.geometry} material={materials[',kz.003']} />
-        <mesh geometry={nodes.Text061_2.geometry} material={materials['NZXT.001']} />
-        <mesh geometry={nodes.Text061_3.geometry} material={materials['5643.001']} />
-        <mesh geometry={nodes.Text061_4.geometry} material={materials['768.001']} />
-        <mesh geometry={nodes.Text061_5.geometry} material={materials['ВЕНЕТ_БОК.001']} />
-        <mesh geometry={nodes.Text061_6.geometry} material={materials['3567.001']} />
-        <mesh geometry={nodes.Text061_7.geometry} material={materials.ЦИЛИНДР_ДИСПЛЕЙ} />
-        <mesh geometry={nodes.Text061_8.geometry} material={materials['34569453.001']} />
-        <mesh geometry={nodes.Text061_9.geometry} material={materials['2546709-.001']} />
-        <mesh geometry={nodes.Text061_10.geometry} material={materials['435273.001']} />
-        <mesh geometry={nodes.Text061_11.geometry} material={materials['34569453.001']} />
-        <mesh geometry={nodes.Text061_12.geometry} material={materials['3452065.001']} />
-        <mesh geometry={nodes.Text061_13.geometry} material={materials.Rgb_Lights_RAM} />
-      </group>
-      <mesh geometry={nodes.Cube.geometry} material={materials['Poured concrete']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes.Cube332.geometry} material={materials['Black Nickel']} position={[1.996, 1.007, -2.164]} />
-      <mesh geometry={nodes.Cube342.geometry} material={materials['Black Nickel']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01'].geometry} material={materials['Material.006']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01001'].geometry} material={materials['Material.001']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01002'].geometry} material={materials['Material.002']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01003'].geometry} material={materials['Material.003']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01004'].geometry} material={materials['Material.004']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes['shelf-arm01005'].geometry} material={materials['Material.005']} position={[0, -1.007, 0]} />
-      <mesh geometry={nodes.Cube001.geometry} material={materials['Black Nickel']} />
-      <mesh geometry={nodes.Cube002.geometry} material={materials['Styrofoam with Black particles']} position={[0.992, 1.766, -0.153]} />
-    </group>
+    <motion.group {...props} dispose={null}>
+      <motion.group  rotation={[0,modelRotation,0]} position={[modelX, modelY, modelZ]}>
+        <pointLight name="Area" intensity={3} decay={2} color="#efe2c3" position={[0.231, 2, -0.573]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.631, 1.942, 0.51]} />
+        <pointLight intensity={1} decay={2} color="#ffcf59" position={[1.691, 5.886, -0.573]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.631, 1.942, 0.51]} />
+        <pointLight intensity={1} decay={2} color="#ff0011" position={[-0.411, 2.349, -2.353]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff5d0d" position={[0.164, 2.365, -2.354]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff0011" position={[0.752, 2.365, -2.364]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff890e" position={[1.368, 2.365, -2.364]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff400f" position={[1.983, 2.365, -2.383]} rotation={[-2.604, 0, 0]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff0011" position={[2.103, 2.307, -2.007]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff5200" position={[2.131, 2.106, -1.337]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff9b20" position={[2.15, 1.899, -0.649]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff4f24" position={[2.14, 1.706, -0.007]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
+        <pointLight intensity={1} decay={2} color="#ff0011" position={[2.155, 1.5, 0.678]} rotation={[-1.279, 1.033, -Math.PI / 2]} scale={[0.183, 0.564, 0.148]} />
+        <mesh geometry={nodes['Text-IK75001'].geometry} material={materials['2.001']} position={[0.376, 1.81, -2.413]} rotation={[Math.PI / 2, 0, 0.157]} scale={0.01} />
+        <mesh geometry={nodes['Text-FEKER'].geometry} material={materials['2']} position={[0.376, 1.821, -2.413]} rotation={[Math.PI / 2, 0, 0.157]} scale={0.045} />
+        <mesh geometry={nodes['Text-BORN'].geometry} material={materials['4534595']} position={[0.644, 1.606, -2.274]} rotation={[Math.PI / 2, 0, 0]} scale={0.041} />
+        <mesh geometry={nodes.Plane137.geometry} material={materials['Procedral White Silk']} position={[0.571, 1.795, -2.362]} rotation={[1.664, 0.015, 0.156]} scale={[0.003, 0.001, 0.003]} />
+        <group position={[0.439, 1.837, -2.691]} rotation={[0, -0.327, 0]}>
+          <mesh geometry={nodes.Cube247.geometry} material={materials['Raindrops On The Glass']} />
+          <mesh geometry={nodes.Cube247_1.geometry} material={materials['Green marble']} />
+        </group>
+        <mesh geometry={nodes.bootle.geometry} material={materials['Raindrops On The Glass']} position={[1.634, 1.768, -2.411]} rotation={[0, -0.27, 0]} />
+        <group position={[0.595, 1.759, -2.406]} rotation={[Math.PI / 2, 0, 0.157]} scale={[0.047, 0.024, 0.047]}>
+          <mesh geometry={nodes.meshId1_name001.geometry} material={materials['White calacatta marble']} />
+          <mesh geometry={nodes.meshId1_name001_1.geometry} material={materials['White Stone']} />
+        </group>
+        <mesh geometry={nodes.wall.geometry} material={materials['Fine leather white']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes.floor.geometry} material={materials['Wood.001']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes.box05.geometry} material={materials['Black Nickel']} position={[1.634, 1.768, -2.411]} rotation={[0, -0.27, 0]} />
+        <mesh geometry={nodes.box03.geometry} material={materials['White Stone']} position={[0, 1.809, -0.259]} />
+        <mesh geometry={nodes.box01.geometry} material={materials['Fine leather black']} position={[0.09, 0, 0.103]} />
+        <group position={[2.009, 1.224, -2.173]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.012}>
+          <mesh geometry={nodes.Cube221.geometry} material={materials['Carbon Fibre']} />
+          <mesh geometry={nodes.Cube221_1.geometry} material={materials['Rubber Black']} />
+        </group>
+        <mesh geometry={nodes.screen02.geometry} material={materials['Metal Black Dixon']} position={[0.396, 1.198, -0.891]} scale={[1.544, 0.167, 0.296]} />
+        <mesh geometry={nodes.screen01.geometry} material={materials['Metal Black Dixon']} position={[0.396, 1.198, -0.252]} scale={[1.544, 0.167, 0.296]} />
+        <mesh geometry={nodes.monitor_mount.geometry} material={materials['Black Iron']} position={[-1.081, -0.478, 0.175]} scale={1.544} />
+        <group position={[1.665, 0.838, -0.683]} rotation={[0, -Math.PI / 2, 0]} scale={0.055}>
+          <mesh geometry={nodes.meshId1_name.geometry} material={materials['White Marble']} />
+          <mesh geometry={nodes.meshId1_name_1.geometry} material={materials['Keyboard Layout ']} />
+        </group>
+        <mesh geometry={nodes.pad.geometry} material={materials['Black and gold marble']} />
+        <motion.mesh geometry={nodes.chair.geometry} material={materials['phongE2.002']} position={[0.843, 0, -0.671]} rotation={[0, chairRotation, 0]} />
+        <group position={[2.135, 0.886, 0.553]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.098}>
+          <mesh geometry={nodes.Text061.geometry} material={materials['ВЕНТИЛЯТОР.001']} />
+          <mesh geometry={nodes.Text061_1.geometry} material={materials[',kz.003']} />
+          <mesh geometry={nodes.Text061_2.geometry} material={materials['NZXT.001']} />
+          <mesh geometry={nodes.Text061_3.geometry} material={materials['5643.001']} />
+          <mesh geometry={nodes.Text061_4.geometry} material={materials['768.001']} />
+          <mesh geometry={nodes.Text061_5.geometry} material={materials['ВЕНЕТ_БОК.001']} />
+          <mesh geometry={nodes.Text061_6.geometry} material={materials['3567.001']} />
+          <mesh geometry={nodes.Text061_7.geometry} material={materials.ЦИЛИНДР_ДИСПЛЕЙ} />
+          <mesh geometry={nodes.Text061_8.geometry} material={materials['34569453.001']} />
+          <mesh geometry={nodes.Text061_9.geometry} material={materials['2546709-.001']} />
+          <mesh geometry={nodes.Text061_10.geometry} material={materials['435273.001']} />
+          <mesh geometry={nodes.Text061_11.geometry} material={materials['34569453.001']} />
+          <mesh geometry={nodes.Text061_12.geometry} material={materials['3452065.001']} />
+          <mesh geometry={nodes.Text061_13.geometry} material={materials.Rgb_Lights_RAM} />
+        </group>
+        <mesh geometry={nodes.Cube.geometry} material={materials['Poured concrete']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes.Cube332.geometry} material={materials['Black Nickel']} position={[1.996, 1.007, -2.164]} />
+        <mesh geometry={nodes.Cube342.geometry} material={materials['Black Nickel']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01'].geometry} material={materials['Material.006']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01001'].geometry} material={materials['Material.001']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01002'].geometry} material={materials['Material.002']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01003'].geometry} material={materials['Material.003']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01004'].geometry} material={materials['Material.004']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes['shelf-arm01005'].geometry} material={materials['Material.005']} position={[0, -1.007, 0]} />
+        <mesh geometry={nodes.Cube001.geometry} material={materials['Black Nickel']} />
+        <mesh geometry={nodes.Cube002.geometry} material={materials['Styrofoam with Black particles']} position={[0.992, 1.766, -0.153]} />
+      </motion.group>
+    </motion.group>
   )
 }
 
