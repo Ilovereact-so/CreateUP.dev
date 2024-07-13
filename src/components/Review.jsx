@@ -49,7 +49,21 @@ export const CMS = () => {
   const [option, setOption] = useState({font:"Poppins", font_styleB:false, font_styleI:false, font_styleU:false,font_size:17, font_color:"" })
   const [isRef, setRef] = useState()
   const [isfontState, setfontState] = useState(7)
+  const baseSTYLE= {
+    p1 : "font-size: 46px; color: rgb(255, 255, 255); font-family: Poppins, sans-serif; font-weight: normal; text-decoration: none; font-style: normal;",
+    d1 : "font-size: 16px;font-family: Poppins, sans-serif;font-weight: bold;text-decoration: none;font-style: normal;background-color: white;color: rgb(0, 0, 0);border-radius: 20px;display: inline-block;padding: 10px 20px;margin-top: 20px;"
+    
+  }
 
+  useEffect(()=>{
+    console.log(localStorage.getItem("p7"))
+    if(localStorage.getItem("p1") === null ){
+      localStorage.setItem("p1", baseSTYLE.p1)
+    }
+    if(localStorage.getItem("d1") === null ){
+      localStorage.setItem("d1", baseSTYLE.d1)
+    }
+  },[])
 const fonts = [
   ['Courier New', 'Courier'],
   ['Franklin Gothic Medium', 'Arial Narrow'],
@@ -132,7 +146,7 @@ const fonts = [
     r.css("color",option.font_color)
     //$(isRef).css("font-family",fonts[isfontState])
     r.css("font-family",fonts[isfontState])
-    console.log(fonts[isfontState])
+    //console.log(fonts[isfontState])
     if(option.font_styleB){
       r.css("font-weight","bold")
 
@@ -162,7 +176,7 @@ const fonts = [
 
     }else{
       setContent(localStorage.getItem("content"))
-      console.log(localStorage.getItem("content"))
+      //console.log(localStorage.getItem("content"))
     }
 
     
@@ -193,10 +207,13 @@ const fonts = [
     var r = $(isRef)
    
     if(isRef != null ){
+      
       const Rstyle = localStorage.getItem(r.attr("id"))
-      const formattedStyles = formatStylesWithNewlineAndNbsp(Rstyle);
-      setCSS("#"+r.attr("id")+"{\n"+formattedStyles+"\n}")
-
+      console.log(Rstyle)
+      if(Rstyle !== null){
+        const formattedStyles = formatStylesWithNewlineAndNbsp(Rstyle);
+        setCSS("#"+r.attr("id")+"{\n"+formattedStyles+"\n}")
+      }
       setOption({
         font:r.css("font-family"),
         font_size:parseInt(r.css("font-size").replace("px","")),
@@ -345,10 +362,39 @@ const fonts = [
   }
 
   const [isAddingE, addElement] = useState(false)
+  const [isAddContent, addContent] = useState("")
+
+
+  const NewContent = () =>{
+    const itemsContent = document.getElementById('ItemsContent');
+
+    if (itemsContent) {
+      const itemsChildren = itemsContent.children;
+      const ids = Array.from(itemsChildren)
+        .map(child => child.getAttribute("id"))
+        .filter(id => id && id.startsWith('p')) // Filtrujemy id zaczynające się od 'p'
+        .map(id => parseInt(id.replace(/\D/g, ''), 10)) // Usuwamy litery i konwertujemy na liczby
+        .filter(id => !isNaN(id)); // Filtrujemy tylko poprawne liczby
+      if (ids.length > 0) {
+        const maxIdValue = Math.max(...ids);
+        console.log(maxIdValue)
+        setContent(`${content }\n<p id="p${maxIdValue +1}">${isAddContent}</p>`);
+        localStorage.setItem("content", `${content }\n<p id="p${maxIdValue +1}">${isAddContent}</p>`)
+      }
+    }
+    SetStyles()
+    addElement(false);
+    addContent("")
+   
+  }
+
+
 
   return (
     <div className='flex justify-start'>
-      <div className='bg-[#0000003a] border-solid border-[#707070] border-[1px] p-5 rounded-[25px] w-min min-w-[40vw] flex justify-between items-end h-min max-w-[50vw] relative max-h-[30vh]'>
+      <div className={`bg-[#0000003a] border-solid border-[#707070] border-[1px] p-5 rounded-[25px] w-min min-w-[40vw] flex justify-between items-end h-full max-w-[50vw] relative max-h-[30vh] ${
+        isAddingE ? "min-h-[230px]" : ""
+      }`}>
         {isEditing ? (
           <AceEditor
             mode="html"
@@ -369,7 +415,7 @@ const fonts = [
             className="h-auto bg-transparent max-h-[200px]"
         />
         ) : (
-          <div id='ItemsContent' className='max-h-[25vh] overflow-auto duration-300 ease-in-out' dangerouslySetInnerHTML={{ __html: content }}></div>
+          <div id='ItemsContent' className='max-h-[25vh] w-full overflow-auto duration-300 ease-in-out' dangerouslySetInnerHTML={{ __html: content }}></div>
         )}
         <button onClick={()=>setEditView(!isEditView)} className={`ml-4 duration-300 ease-in-out ${
           isAddingE ? "hidden" : ""
@@ -387,7 +433,10 @@ const fonts = [
             <div className='bg-black text-white p-1 px-3 w-min text-[14px] mb-2'>tekst</div>
             <i onClick={()=> addElement(false)} className={`gg-close text-red-500 cursor-pointer `}></i>
           </div>
-          <textarea className='bg-[#000000b6] h-full mx-2 p-2 rounded-[10px]'></textarea>
+          <textarea onChange={(e)=>addContent(e.target.value)} value={isAddContent} className='bg-[#000000b6] resize-none NNscroll h-full mx-2 p-2 rounded-[10px] h-min-[200px]'></textarea>
+          <div className="flex justify-center">
+            <div onClick={NewContent} className='bg-white text-black w-min px-4 py-2 text-[15px] rounded-[20px] font-bold mt-5 cursor-pointer'>Dodaj</div>
+          </div>
         </div>
       </div>
       <div className='tooltip'>
@@ -449,7 +498,9 @@ const fonts = [
                 <div className='tooltiptext'>Kolor tekstu</div>   
                 <i onClick={()=>setFColor(!isFColor)} style={{color:option.font_color}} className={`gg-format-color ml-7 mr-2 cursor-pointer ease-in-out duration-200 ${
                   isFColor ? "scale-150":"scale-125"
-                }`}></i>
+                }
+                ${isFColor ? "text-red-400" : ""}
+                `}></i>
               </div>
             </div>
           </div>
@@ -457,17 +508,17 @@ const fonts = [
             <div className='flex justify-between w-[60px]'>
               <div className='tooltip'>
                 <div className='tooltiptext'>Modyfikuj budowe elementów</div>
-                <i onClick={toggleEditing} className="gg-desktop scale-90 cursor-pointer"></i>
+                <i onClick={isAddingE ? null: toggleEditing} className={`gg-desktop scale-90 ${isAddingE ? "cursor-default" : "cursor-pointer"} ${isEditing ? "text-red-400" : ""}`}></i>
               </div>
               <div className='tooltip'>
                 <div className='tooltiptext'>Dodaj element</div>
-                <i onClick={()=>addElement(!isAddingE)} className="gg-add scale-90 cursor-pointer"></i>
+                <i onClick={()=>isEditing? null: addElement(!isAddingE)} className={`gg-add scale-90 ${isEditing ? "cursor-default" : "cursor-pointer"} ${isAddingE ? "text-red-400" : ""}`}></i>
               </div>
             </div>
             <div className='flex w-[50px] justify-between'>
               <div className='tooltip'>
                 <div className='tooltiptext'>Modufikuj Style (CSS)</div>
-                <i onClick={()=> setVWcss(!isVWcss)} class="gg-code-slash mt-2 cursor-pointer"></i>
+                <i onClick={()=> setVWcss(!isVWcss)} class={`gg-code-slash mt-2 cursor-pointer ${isVWcss ? "text-red-400" : ""}`}></i>
               </div>
               <i className="gg-attachment scale-90"></i>  
             </div>
