@@ -24,7 +24,9 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-          <Route exact path='/'  element={<DevIndex/>}></Route>
+          <Route exact path='/'  element={<DevIndex element = {0}/>}></Route>
+          <Route exact path='/review'  element={<DevIndex element = {1}/>}></Route>
+          <Route exact path='/niger'  element={<DevIndex element = {2}/>}></Route>
 
       </Routes>
   </BrowserRouter>

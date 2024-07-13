@@ -41,7 +41,25 @@ const Hero = () => {
     const UXContorlMouse = () =>{
         SetUseMouse(false)
         const y = window.innerHeight
-        animate(targetRef.current, {"--y":`${y}px`}, {duration:1, type:"tween",ease:"circIn"})  
+        //$(targetRef.current).prop
+        const slide = (
+            [0,1],
+            [`${targetRef.current.style.getPropertyValue("--y")}`,`${y}px`]
+          )
+        animate(targetRef.current, {"--y": slide}, {duration:1, type:"keyframes",ease:"circIn"})  
+
+        const documentHeight = $(document).height();
+        const windowHeight = $(window).height();
+        const scrollAmount = documentHeight - windowHeight;
+        setTimeout(()=>{
+            $('html, body')
+            .animate({ scrollTop: scrollAmount * 0.25 }, 1500)
+            .animate({ scrollTop: scrollAmount * 0.5 }, 1000)
+            .animate({ scrollTop: scrollAmount * 0.75 }, 750)
+            .animate({ scrollTop: scrollAmount }, 2000);
+            },900)
+        //$(document.body.scrollTop).scrollTop(400)
+        //console.log(scroll)
     }
 
     const header = useRef(null)

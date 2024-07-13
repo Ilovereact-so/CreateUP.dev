@@ -24,6 +24,7 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +36,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+#font_s_input::-webkit-outer-spin-button,
+#font_s_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#font_s_input[type=number] {
+  -moz-appearance: textfield;
+}
+#font_s_input:focus {outline:none!important;}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  height: min-content;
+  z-index: 100;
+}
+
+.tooltip .tooltiptext {
+  font-family: Poppins;
+  font-size: 13px;
+  visibility: hidden;
+  background-color: black;
+  color: #98a0a5;
+  text-align: center;
+  border-radius: 15px;
+  padding: 7px 20px 7px 20px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Umieść tooltip powyżej ikony */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

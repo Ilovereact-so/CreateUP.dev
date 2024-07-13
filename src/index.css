@@ -23,6 +23,18 @@
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/color-bucket.css');
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/add.css');
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/smartphone-chip.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/pen.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/info.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/chevron-left.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/chevron-right.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/format-italic.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/format-underline.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/format-bold.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/format-color.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/desktop.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/attachment.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/code-slash.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/check.css');
 
 body {
   margin: 0;
@@ -45,8 +57,21 @@ html {
   --thumbBG: #4e4e4e;
 }
 
+#menuContainer::-webkit-scrollbar {
+  width: 11px;
+
+}
+#menuContainer::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+#menuContainer::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4 ;
+  border-radius: 6px;
+}
+
 body::-webkit-scrollbar {
   width: 11px;
+
 }
 body::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
@@ -55,6 +80,41 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG) ;
   border-radius: 6px;
 }
+
+#ItemsContent::-webkit-scrollbar {
+  width: 11px;
+
+}
+#ItemsContent::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+#ItemsContent::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+}
+/* Dla innych przeglądarek */
+.ace_editor .ace_scrollbar {
+  scrollbar-width: 11px;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.ace_content > .ace_layer > .ace_print-margin{
+ background-color:  transparent;
+ border: none;
+}
+
+.NNscroll::-webkit-scrollbar {
+  height: 5px;
+
+}
+.NNscroll::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.NNscroll::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 7px;
+}
+
 #scrollBTN p{
   animation: hiddenBTN 3s infinite;
   animation-delay: -6s;
