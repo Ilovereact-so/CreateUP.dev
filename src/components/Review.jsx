@@ -371,15 +371,22 @@ const fonts = [
         ) : (
           <div id='ItemsContent' className='max-h-[25vh] overflow-auto duration-300 ease-in-out' dangerouslySetInnerHTML={{ __html: content }}></div>
         )}
-        <button onClick={()=>setEditView(!isEditView)} className='ml-4 duration-300 ease-in-out'>
+        <button onClick={()=>setEditView(!isEditView)} className={`ml-4 duration-300 ease-in-out ${
+          isAddingE ? "hidden" : ""
+        }`}>
           <div className='tooltip'>
             <div className='tooltiptext'>{isEditView ? "Zamknij" : "Edytuj"}</div>
             <i className={`${isEditView ? "gg-close" : "gg-pen"} `}></i>
           </div>
           
         </button>
-        <div className='bg-[#161616dc] w-full h-full absolute top-0 right-0 rounded-[25px] flex flex-col p-4'>
-          <div className='bg-black text-white p-1 px-3 w-min text-[14px] mb-2'>tekst</div>
+        <div className={`bg-[#161616dc] w-full h-full absolute top-0 right-0 rounded-[25px] flex-col p-4 ${
+          isAddingE ? "flex" : "hidden"
+        }`}>
+          <div className='flex justify-between items-center'>
+            <div className='bg-black text-white p-1 px-3 w-min text-[14px] mb-2'>tekst</div>
+            <i onClick={()=> addElement(false)} className={`gg-close text-red-500 cursor-pointer `}></i>
+          </div>
           <textarea className='bg-[#000000b6] h-full mx-2 p-2 rounded-[10px]'></textarea>
         </div>
       </div>
@@ -454,7 +461,7 @@ const fonts = [
               </div>
               <div className='tooltip'>
                 <div className='tooltiptext'>Dodaj element</div>
-                <i onClick={()=>addElement(true)} className="gg-add scale-90 cursor-pointer"></i>
+                <i onClick={()=>addElement(!isAddingE)} className="gg-add scale-90 cursor-pointer"></i>
               </div>
             </div>
             <div className='flex w-[50px] justify-between'>
